@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace Refrigerator
+namespace com.codecool.api
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var f = new NormalRefig();
+            Console.WriteLine(f.GetType());
         }
     }
 }

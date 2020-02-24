@@ -1,0 +1,11 @@
+C:\Learning\Personal_A\Refrigerator\Refrigerator\obj\Debug\netcoreapp3.1\Refrigerator.csprojAssemblyReference.cache
+C:\Learning\Personal_A\Refrigerator\Refrigerator\obj\Debug\netcoreapp3.1\Refrigerator.AssemblyInfoInputs.cache
+C:\Learning\Personal_A\Refrigerator\Refrigerator\obj\Debug\netcoreapp3.1\Refrigerator.AssemblyInfo.cs
+C:\Learning\Personal_A\Refrigerator\Refrigerator\bin\Debug\netcoreapp3.1\Refrigerator.exe
+C:\Learning\Personal_A\Refrigerator\Refrigerator\bin\Debug\netcoreapp3.1\Refrigerator.deps.json
+C:\Learning\Personal_A\Refrigerator\Refrigerator\bin\Debug\netcoreapp3.1\Refrigerator.runtimeconfig.json
+C:\Learning\Personal_A\Refrigerator\Refrigerator\bin\Debug\netcoreapp3.1\Refrigerator.runtimeconfig.dev.json
+C:\Learning\Personal_A\Refrigerator\Refrigerator\bin\Debug\netcoreapp3.1\Refrigerator.dll
+C:\Learning\Personal_A\Refrigerator\Refrigerator\bin\Debug\netcoreapp3.1\Refrigerator.pdb
+C:\Learning\Personal_A\Refrigerator\Refrigerator\obj\Debug\netcoreapp3.1\Refrigerator.dll
+C:\Learning\Personal_A\Refrigerator\Refrigerator\obj\Debug\netcoreapp3.1\Refrigerator.pdb

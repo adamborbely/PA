@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ArrayOfRefigrigator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Refigrigator xsi:type="NormalRefig">
+    <numOfShelfs>6</numOfShelfs>
+    <shelfContainer>
+      <Shelf>
+        <id>1</id>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>2</id>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>3</id>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>4</id>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>5</id>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>6</id>
+        <foodList />
+      </Shelf>
+    </shelfContainer>
+    <fridgeSize>Normal</fridgeSize>
+    <isOpen>false</isOpen>
+  </Refigrigator>
+  <Refigrigator xsi:type="MiniRefig">
+    <numOfShelfs>3</numOfShelfs>
+    <shelfContainer>
+      <Shelf>
+        <id>1</id>
+        <foodList>
+          <Food>
+            <_calories>323</_calories>
+            <_size>45</_size>
+            <_name>csoki</_name>
+          </Food>
+        </foodList>
+      </Shelf>
+      <Shelf>
+        <id>2</id>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>2</id>
+        <foodList />
+      </Shelf>
+    </shelfContainer>
+    <fridgeSize>Mini</fridgeSize>
+    <isOpen>true</isOpen>
+  </Refigrigator>
+</ArrayOfRefigrigator>

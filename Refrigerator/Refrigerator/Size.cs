@@ -1,6 +1,6 @@
 ﻿namespace com.codecool.api
 {
-    enum Size
+    public enum Size
     {
         Mini,
         Normal,

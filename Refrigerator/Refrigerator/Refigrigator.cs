@@ -12,10 +12,10 @@ namespace com.codecool.api
     [XmlInclude(typeof(Food))]
     public abstract class Refigrigator
     {
-        protected int numOfShelfs;
-        protected Shelf[] shelfContainer;
-        protected Size fridgeSize;
-        private bool isOpen = false;
+        public int numOfShelfs;
+        public Shelf[] shelfContainer;
+        public Size fridgeSize;
+        public bool isOpen = false;
 
         //protected Refigrigator(int numOfShelfs, Size size)
         //{
@@ -85,7 +85,10 @@ namespace com.codecool.api
                     }
                 }
             }
-            throw new FridgeIsClosedException();
+            else
+            {
+                throw new FridgeIsClosedException();
+            }
         }
         public int ConsumeFood(string name)
         {

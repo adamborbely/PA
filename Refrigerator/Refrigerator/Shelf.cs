@@ -5,10 +5,10 @@ namespace com.codecool.api
 {
     public class Shelf
     {
-        private int id;
+        public int id;
         private int capacity;
         private Size shelfSize;
-        private List<Food> foodList;
+        public List<Food> foodList;
         public Size ShelfSize
         {
             get { return shelfSize; }
@@ -21,7 +21,7 @@ namespace com.codecool.api
         {
             get { return capacity; }
         }
-
+        public Shelf() { }
         public Shelf(int id, int capacity, Size size)
         {
             this.id = id;

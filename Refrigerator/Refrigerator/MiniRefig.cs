@@ -4,7 +4,7 @@ using System.Text;
 
 namespace com.codecool.api
 {
-    class MiniRefig : Refigrigator
+    public class MiniRefig : Refigrigator
     {
         public MiniRefig()
         {

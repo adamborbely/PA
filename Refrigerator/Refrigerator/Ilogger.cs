@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Refrigerator
+namespace com.codecool.api
 {
-    class Ilogger
+    interface Ilogger
     {
+        public void Save(List<Refigrigator> refigrigators);
+        public List<Refigrigator> Load(string path);
     }
 }

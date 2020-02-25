@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace com.codecool.api
 {
-    class NormalRefig : Refigrigator
+
+    public class NormalRefig : Refigrigator
     {
         public NormalRefig()
         {

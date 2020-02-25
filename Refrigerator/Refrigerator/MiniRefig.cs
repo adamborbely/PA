@@ -9,7 +9,7 @@ namespace com.codecool.api
         public MiniRefig()
         {
             numOfShelfs = 3;
-            shelfContainer = new Shelf[] { new Shelf(1, 100, Size.Mini), new Shelf(2, 100, Size.Mini), new Shelf(2, 100, Size.Mini) };
+            shelfContainer = new Shelf[] { new Shelf(1, 100, Size.Mini), new Shelf(2, 100, Size.Mini), new Shelf(3, 100, Size.Mini) };
             fridgeSize = Size.Mini;
         }
 

@@ -73,16 +73,22 @@ namespace com.codecool.api
         {
             if (isOpen)
             {
+                var isFull = true;
                 foreach (var shelf in shelfContainer)
                 {
                     if (shelf.AddFood(food))
                     {
+                        isFull = false;
                         break;
                     }
-                    else
-                    {
-                        throw new FridgeIsFullException();
-                    }
+                    //else
+                    //{
+                    //    
+                    //}
+                }
+                if (isFull)
+                {
+                    throw new FridgeIsFullException();
                 }
             }
             else

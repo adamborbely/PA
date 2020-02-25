@@ -11,8 +11,51 @@ namespace com.codecool.api
             var gf = new Food(323, 45, "csoki");
             g.Open();
             g.AddFood(gf);
+            g.AddFood(gf);
+            g.AddFood(gf);
+            g.AddFood(gf);
+            g.AddFood(gf);
+            g.AddFood(gf);
+
+
+            var p = new DoubleRefig();
+
+            p.Open();
+
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
+            p.AddFood(gf);
             var xml = new XmlLoader();
-            xml.Save(new System.Collections.Generic.List<Refigrigator> { f, g });
+            xml.Save(new System.Collections.Generic.List<Refigrigator> { f, g, p });
         }
     }
 }

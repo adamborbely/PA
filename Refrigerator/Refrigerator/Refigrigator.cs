@@ -12,21 +12,13 @@ namespace com.codecool.api
     [XmlInclude(typeof(Food))]
     public abstract class Refigrigator
     {
+        public string Name;
         public int numOfShelfs;
         public Shelf[] shelfContainer;
         public Size fridgeSize;
         public bool isOpen = false;
 
-        //protected Refigrigator(int numOfShelfs, Size size)
-        //{
-        //    this.numOfShelfs = numOfShelfs;
-        //    shelfContainer = new Shelf[numOfShelfs];
-        //    this.fridgeSize = size;
-        //}
-        //public Refigrigator()
-        //{
 
-        //}
         public abstract Shelf CoolBigItem(Food food);
         public abstract void CoolSmallItem(Food food);
         public int FindEmptyShelfPlace()
@@ -81,10 +73,6 @@ namespace com.codecool.api
                         isFull = false;
                         break;
                     }
-                    //else
-                    //{
-                    //    
-                    //}
                 }
                 if (isFull)
                 {

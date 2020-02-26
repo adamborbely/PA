@@ -6,8 +6,9 @@ namespace com.codecool.api
 {
     public class DoubleRefig : Refigrigator
     {
-        public DoubleRefig()
+        public DoubleRefig(string name)
         {
+            Name = name;
             numOfShelfs = 10;
             shelfContainer = new Shelf[numOfShelfs];
             for (int i = 0; i < numOfShelfs; i++)
@@ -16,6 +17,7 @@ namespace com.codecool.api
             }
             fridgeSize = Size.DoubleDoor;
         }
+        public DoubleRefig() { }
 
         public override Shelf CoolBigItem(Food food)
         {

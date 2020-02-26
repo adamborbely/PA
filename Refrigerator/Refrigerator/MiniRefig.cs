@@ -6,12 +6,14 @@ namespace com.codecool.api
 {
     public class MiniRefig : Refigrigator
     {
-        public MiniRefig()
+        public MiniRefig(string name)
         {
+            Name = name;
             numOfShelfs = 3;
             shelfContainer = new Shelf[] { new Shelf(1, 100, Size.Mini), new Shelf(2, 100, Size.Mini), new Shelf(3, 100, Size.Mini) };
             fridgeSize = Size.Mini;
         }
+        public MiniRefig() { }
 
         public override Shelf CoolBigItem(Food food)
         {

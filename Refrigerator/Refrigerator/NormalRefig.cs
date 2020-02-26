@@ -9,8 +9,9 @@ namespace com.codecool.api
 
     public class NormalRefig : Refigrigator
     {
-        public NormalRefig()
+        public NormalRefig(string name)
         {
+            Name = name;
             numOfShelfs = 6;
             shelfContainer = new Shelf[numOfShelfs];
             for (int i = 0; i < numOfShelfs; i++)
@@ -19,6 +20,7 @@ namespace com.codecool.api
             }
             fridgeSize = Size.Normal;
         }
+        public NormalRefig() { }
 
         public override Shelf CoolBigItem(Food food)
         {

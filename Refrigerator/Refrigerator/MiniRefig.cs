@@ -17,13 +17,21 @@ namespace com.codecool.api
 
         public override Shelf CoolBigItem(Food food)
         {
-            throw new NotImplementedException();
-            //throw new CannotCoolItException();
+            throw new CannotCoolItException();
         }
 
-        public override void CoolSmallItem(Food food)
+        public override bool CoolSmallItem(Food food)
         {
-            throw new NotImplementedException();
+
+            foreach (var shelf in shelfContainer)
+            {
+                if (shelf.AddFood(food))
+                {
+                    return false;
+
+                }
+            }
+            return true;
         }
         //public 
     }

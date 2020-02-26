@@ -2,6 +2,7 @@
 using System.Text;
 using System.Linq;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace com.codecool.api
 {
@@ -17,15 +18,15 @@ namespace com.codecool.api
         public Shelf[] shelfContainer;
         public Size fridgeSize;
         public bool isOpen = false;
-
+        public Shelf RemovedShelf;
 
         public abstract Shelf CoolBigItem(Food food);
-        public abstract void CoolSmallItem(Food food);
+        public abstract bool CoolSmallItem(Food food);
         public int FindEmptyShelfPlace()
         {
             if (shelfContainer.Contains(null))
             {
-                return Array.IndexOf(shelfContainer, null);
+                return Array.LastIndexOf(shelfContainer, null);
             }
             else
             {
@@ -66,12 +67,23 @@ namespace com.codecool.api
             if (isOpen)
             {
                 var isFull = true;
-                foreach (var shelf in shelfContainer)
+                if (food.Size < 20)
                 {
-                    if (shelf.AddFood(food))
+                    isFull = CoolSmallItem(food);
+                }
+                else if (food.Size > 80)
+                {
+                    RemovedShelf = CoolBigItem(food);
+                }
+                else
+                {
+                    foreach (var shelf in shelfContainer)
                     {
-                        isFull = false;
-                        break;
+                        if (shelf.AddFood(food))
+                        {
+                            isFull = false;
+                            break;
+                        }
                     }
                 }
                 if (isFull)
@@ -98,6 +110,25 @@ namespace com.codecool.api
                     }
                 }
                 throw new FoodNotExistsException();
+            }
+            throw new FridgeIsClosedException();
+        }
+
+        public List<Food> ListFood()
+        {
+            if (isOpen)
+            {
+                var result = new List<Food>();
+
+                foreach (var shelf in shelfContainer)
+                {
+                    if (shelf != null)
+                    {
+                        result.AddRange(shelf.foodList);
+                    }
+                }
+
+                return result;
             }
             throw new FridgeIsClosedException();
         }

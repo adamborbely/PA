@@ -24,9 +24,9 @@ namespace com.codecool.api
             throw new NotImplementedException();
         }
 
-        public override void CoolSmallItem(Food food)
+        public override bool CoolSmallItem(Food food)
         {
-            throw new NotImplementedException();
+            throw new CannotCoolItException();
         }
     }
 }

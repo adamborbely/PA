@@ -26,21 +26,33 @@ namespace com.codecool.api
         {
             if (shelfContainer.Contains(null))
             {
-                if (FindEmptyShelfPlace() + 2 < shelfContainer.Length)
+                if (FindEmptyShelfPlace() + 3 < shelfContainer.Length)
                 {
+                    shelfContainer[FindEmptyShelfPlace() + 3].AddFood(food);
                     return RemoveShelf(FindEmptyShelfPlace() + 2);
                 }
                 throw new CannotCoolItException();
             }
             else
             {
+                shelfContainer[1].AddFood(food);
                 return RemoveShelf(0);
             }
         }
 
-        public override void CoolSmallItem(Food food)
+        public override bool CoolSmallItem(Food food)
         {
-            AddFood(food);
+            foreach (var shelf in shelfContainer)
+            {
+                if (shelf != null)
+                {
+                    if (shelf.AddFood(food))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

@@ -32,4 +32,8 @@ namespace com.codecool.api
     {
         public FoodNotExistsException() { }
     }
+    class TooSmallItemException : RefidrigatorExceptions
+    {
+        public TooSmallItemException() { }
+    }
 }

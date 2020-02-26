@@ -11,7 +11,13 @@ namespace com.codecool.api
         string path = "Inventory.xml";
         public List<Refigrigator> Load(string path)
         {
-            throw new NotImplementedException();
+            var result = new List<Refigrigator>();
+            XmlSerializer serializer3 = new XmlSerializer(typeof(List<Refigrigator>));
+            using (FileStream fs2 = File.OpenRead(path))
+            {
+                result = (List<Refigrigator>)serializer3.Deserialize(fs2);
+            }
+            return result;
         }
 
         public void Save(List<Refigrigator> refigrigators)
@@ -22,5 +28,6 @@ namespace com.codecool.api
                 serializer2.Serialize(fs, refigrigators);
             }
         }
+
     }
 }

@@ -7,7 +7,7 @@ namespace com.codecool.api
     {
         public int id;
         private int capacity;
-        private Size shelfSize;
+        public Size shelfSize;
         public List<Food> foodList;
         public Size ShelfSize
         {

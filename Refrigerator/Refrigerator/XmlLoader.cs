@@ -22,11 +22,16 @@ namespace com.codecool.api
 
         public void Save(List<Refigrigator> refigrigators)
         {
-            using (Stream fs = new FileStream(path, FileMode.OpenOrCreate))
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            using (Stream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
             {
                 XmlSerializer serializer2 = new XmlSerializer(typeof(List<Refigrigator>));
                 serializer2.Serialize(fs, refigrigators);
             }
+
         }
 
     }

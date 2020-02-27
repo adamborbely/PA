@@ -17,7 +17,7 @@ namespace com.codecool.api
         public int numOfShelfs;
         public Shelf[] shelfContainer;
         public Size fridgeSize;
-        public bool isOpen = false;
+        private bool isOpen = false;
         public Shelf RemovedShelf;
 
         public abstract Shelf CoolBigItem(Food food);

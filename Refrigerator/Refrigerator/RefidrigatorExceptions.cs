@@ -36,4 +36,8 @@ namespace com.codecool.api
     {
         public TooSmallItemException() { }
     }
+    class NoSuchRefigrigatorException : RefidrigatorExceptions
+    {
+        public NoSuchRefigrigatorException() { }
+    }
 }

@@ -1,43 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfRefigrigator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Refigrigator xsi:type="NormalRefig">
-    <numOfShelfs>6</numOfShelfs>
-    <shelfContainer>
-      <Shelf>
-        <id>1</id>
-        <shelfSize>Normal</shelfSize>
-        <foodList />
-      </Shelf>
-      <Shelf>
-        <id>2</id>
-        <shelfSize>Normal</shelfSize>
-        <foodList />
-      </Shelf>
-      <Shelf>
-        <id>3</id>
-        <shelfSize>Normal</shelfSize>
-        <foodList />
-      </Shelf>
-      <Shelf>
-        <id>4</id>
-        <shelfSize>Normal</shelfSize>
-        <foodList />
-      </Shelf>
-      <Shelf>
-        <id>5</id>
-        <shelfSize>Normal</shelfSize>
-        <foodList />
-      </Shelf>
-      <Shelf>
-        <id>6</id>
-        <shelfSize>Normal</shelfSize>
-        <foodList />
-      </Shelf>
-    </shelfContainer>
-    <fridgeSize>Normal</fridgeSize>
-    <isOpen>false</isOpen>
-  </Refigrigator>
   <Refigrigator xsi:type="MiniRefig">
+    <Name>Minix</Name>
     <numOfShelfs>3</numOfShelfs>
     <shelfContainer>
       <Shelf>
@@ -45,268 +9,24 @@
         <shelfSize>Mini</shelfSize>
         <foodList>
           <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
+            <_calories>12</_calories>
+            <_size>24</_size>
+            <_name>alma</_name>
           </Food>
         </foodList>
       </Shelf>
       <Shelf>
         <id>2</id>
         <shelfSize>Mini</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
+        <foodList />
       </Shelf>
       <Shelf>
         <id>3</id>
         <shelfSize>Mini</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
+        <foodList />
       </Shelf>
     </shelfContainer>
     <fridgeSize>Mini</fridgeSize>
-    <isOpen>true</isOpen>
-  </Refigrigator>
-  <Refigrigator xsi:type="DoubleRefig">
-    <numOfShelfs>10</numOfShelfs>
-    <shelfContainer>
-      <Shelf>
-        <id>1</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>2</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>3</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>4</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>5</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>6</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>7</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>8</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>9</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-      <Shelf>
-        <id>10</id>
-        <shelfSize>DoubleDoor</shelfSize>
-        <foodList>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-          <Food>
-            <_calories>323</_calories>
-            <_size>45</_size>
-            <_name>csoki</_name>
-          </Food>
-        </foodList>
-      </Shelf>
-    </shelfContainer>
-    <fridgeSize>DoubleDoor</fridgeSize>
-    <isOpen>true</isOpen>
+    <isOpen>false</isOpen>
   </Refigrigator>
 </ArrayOfRefigrigator>

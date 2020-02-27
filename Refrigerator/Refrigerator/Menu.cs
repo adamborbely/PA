@@ -48,12 +48,21 @@ namespace com.codecool.cmd
                     "6) to delete a fridge \n" +
                     "7) to save\n" +
                     "8) to load previous\n" +
-                    "9) Check consumed calories\n" +
+                    "9) to check consumed calories\n" +
                     "0) to exit");
                 var ans = Console.ReadLine();
                 if (ans == "1")
                 {
-                    var newFridge = AddRefig();
+                    try
+                    {
+                        var newFridge = AddRefig();
+
+                    }
+                    catch (FridgeAlreadyExistsException)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Please choose an uniqe name for your fridge!");
+                    }
                 }
                 else if (ans == "2")
                 {
@@ -147,8 +156,8 @@ namespace com.codecool.cmd
               $"4) to eat some food\n" +
               $"5) to check the free space in the fridge\n" +
               $"6) to check if the plaza is open or not\n" +
-              $"7) list items in the cart\n" +
-              $"0) leave and close the fridge");
+              $"7) to close the fridge\n" +
+              $"0) to leave and close the fridge");
             return Console.ReadLine();
         }
 
@@ -192,9 +201,12 @@ namespace com.codecool.cmd
                             Console.WriteLine("What is the size of the food?");
                             var size = Convert.ToInt32(Console.ReadLine());
                             refig.AddFood(new Food(calories, size, foodName));
+
                             if (refig.RemovedShelf != null)
                             {
                                 shelves.Add(refig.RemovedShelf);
+                                foods.AddRange(refig.RemovedShelf.foodList);
+                                refig.RemovedShelf.foodList = new List<Food>();
                                 refig.RemovedShelf = null;
                             }
                         }
@@ -221,8 +233,26 @@ namespace com.codecool.cmd
                     }
                     break;
                 case "4":
-                    Console.WriteLine("What you want to eat?");
-                    var foodToEat = Console.ReadLine();
+                    try
+                    {
+                        Console.WriteLine("What you want to eat?");
+                        var foodToEat = Console.ReadLine();
+                        consumedCalories += refig.ConsumeFood(foodToEat);
+                    }
+                    catch (FoodNotExistsException)
+                    {
+
+                        Console.WriteLine("You have no food called like that!");
+                    }
+                    catch (FridgeIsClosedException)
+                    {
+
+                        Console.WriteLine("Open the fridge first!");
+                    }
+
+                    break;
+                case "7":
+                    refig.Close();
                     break;
                 case "0":
                     refig.Close();
@@ -242,25 +272,47 @@ namespace com.codecool.cmd
                 {
                     Console.WriteLine("Give a name to your Mini Fridge!");
                     var fridgeName = Console.ReadLine();
-                    var fridge = new MiniRefig(fridgeName);
-                    refigrigators.Add(fridge);
-                    return fridge;
+                    if (mh.CheckRefigAlreadyExist(Refigrigators, fridgeName))
+                    {
+                        var fridge = new MiniRefig(fridgeName);
+                        refigrigators.Add(fridge);
+                        return fridge;
+                    }
+                    else
+                    {
+                        throw new FridgeAlreadyExistsException();
+                    }
+
                 }
                 else if (fridgeSize == "2")
                 {
                     Console.WriteLine("Give a name to your Normal Fridge!");
                     var fridgeName = Console.ReadLine();
-                    var fridge = new NormalRefig(fridgeName);
-                    refigrigators.Add(fridge);
-                    return fridge;
+                    if (mh.CheckRefigAlreadyExist(Refigrigators, fridgeName))
+                    {
+                        var fridge = new NormalRefig(fridgeName);
+                        refigrigators.Add(fridge);
+                        return fridge;
+                    }
+                    else
+                    {
+                        throw new FridgeAlreadyExistsException();
+                    }
                 }
                 else if (fridgeSize == "3")
                 {
                     Console.WriteLine("Give a name to your Double Door Fridge!");
                     var fridgeName = Console.ReadLine();
-                    var fridge = new DoubleRefig(fridgeName);
-                    this.refigrigators.Add(fridge);
-                    return fridge;
+                    if (mh.CheckRefigAlreadyExist(Refigrigators, fridgeName))
+                    {
+                        var fridge = new DoubleRefig(fridgeName);
+                        refigrigators.Add(fridge);
+                        return fridge;
+                    }
+                    else
+                    {
+                        throw new FridgeAlreadyExistsException();
+                    }
                 }
                 else
                 {
@@ -286,6 +338,16 @@ namespace com.codecool.cmd
             }
             throw new NoSuchRefigrigatorException();
         }
-
+        public bool CheckRefigAlreadyExist(List<Refigrigator> refigs, string name)
+        {
+            foreach (var fridge in refigs)
+            {
+                if (fridge.Name.Equals(name))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

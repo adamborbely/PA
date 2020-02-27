@@ -40,4 +40,8 @@ namespace com.codecool.api
     {
         public NoSuchRefigrigatorException() { }
     }
+    class FridgeAlreadyExistsException : RefidrigatorExceptions
+    {
+        public FridgeAlreadyExistsException() { }
+    }
 }

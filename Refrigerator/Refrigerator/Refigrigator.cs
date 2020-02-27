@@ -18,7 +18,7 @@ namespace com.codecool.api
         public Shelf[] shelfContainer;
         public Size fridgeSize;
         private bool isOpen = false;
-        public Shelf RemovedShelf;
+        public Shelf RemovedShelf = null;
 
         public abstract Shelf CoolBigItem(Food food);
         public abstract bool CoolSmallItem(Food food);
@@ -74,6 +74,7 @@ namespace com.codecool.api
                 else if (food.Size > 80)
                 {
                     RemovedShelf = CoolBigItem(food);
+                    isFull = false;
                 }
                 else
                 {
@@ -102,12 +103,16 @@ namespace com.codecool.api
             {
                 foreach (var shelf in shelfContainer)
                 {
-                    if (shelf.ContainsFood(name))
+                    if (shelf != null)
                     {
-                        var calories = shelf.FindFood(name).Calories;
-                        shelf.RemoveFood(name);
-                        return calories;
+                        if (shelf.ContainsFood(name))
+                        {
+                            var calories = shelf.FindFood(name).Calories;
+                            shelf.RemoveFood(name);
+                            return calories;
+                        }
                     }
+
                 }
                 throw new FoodNotExistsException();
             }

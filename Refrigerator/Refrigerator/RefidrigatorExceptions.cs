@@ -44,4 +44,18 @@ namespace com.codecool.api
     {
         public FridgeAlreadyExistsException() { }
     }
+    class BigItemCoolingException : RefidrigatorExceptions
+    {
+        public BigItemCoolingException() { }
+    }
+    class ShelfAlreadyRemovedException : RefidrigatorExceptions
+    {
+        public ShelfAlreadyRemovedException() { }
+    }
+    class NoCompatibleShelfException : RefidrigatorExceptions
+    {
+        public NoCompatibleShelfException() { }
+    }
+
+
 }

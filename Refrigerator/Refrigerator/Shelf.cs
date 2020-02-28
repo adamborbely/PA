@@ -80,6 +80,17 @@ namespace com.codecool.api
             }
             throw new FoodNotExistsException();
         }
+        public bool NotContainsBigItem()
+        {
+            foreach (var food in foodList)
+            {
+                if (food.Size > 80)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
 

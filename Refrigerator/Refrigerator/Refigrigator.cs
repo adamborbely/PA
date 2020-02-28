@@ -39,7 +39,21 @@ namespace com.codecool.api
             {
                 if (fridgeSize.Equals(shelf.ShelfSize))
                 {
-                    shelfContainer[FindEmptyShelfPlace()] = shelf;
+                    if (shelfContainer[shelf.ID - 1] == null)
+                    {
+                        if (shelfContainer[shelf.ID].NotContainsBigItem())
+                        {
+                            shelfContainer[shelf.ID - 1] = shelf;
+                        }
+                        else
+                        {
+                            throw new BigItemCoolingException();
+                        }
+                    }
+                    else
+                    {
+                        throw new SizeNotCompatableException();
+                    }
                 }
                 else
                 {
@@ -55,9 +69,17 @@ namespace com.codecool.api
         {
             if (isOpen)
             {
-                var ShelfToRemove = shelfContainer[number];
-                shelfContainer[number] = null;
-                return ShelfToRemove;
+                if (shelfContainer[number] != null)
+                {
+                    var ShelfToRemove = shelfContainer[number];
+                    shelfContainer[number] = null;
+                    return ShelfToRemove;
+                }
+                else
+                {
+                    throw new ShelfAlreadyRemovedException();
+                }
+
             }
             throw new FridgeIsClosedException();
         }
@@ -97,7 +119,7 @@ namespace com.codecool.api
                 throw new FridgeIsClosedException();
             }
         }
-        public int ConsumeFood(string name)
+        public Food GetFoodFromFridge(string name)
         {
             if (isOpen)
             {
@@ -107,12 +129,11 @@ namespace com.codecool.api
                     {
                         if (shelf.ContainsFood(name))
                         {
-                            var calories = shelf.FindFood(name).Calories;
+                            var resultFood = shelf.FindFood(name);
                             shelf.RemoveFood(name);
-                            return calories;
+                            return resultFood;
                         }
                     }
-
                 }
                 throw new FoodNotExistsException();
             }
@@ -132,10 +153,28 @@ namespace com.codecool.api
                         result.AddRange(shelf.foodList);
                     }
                 }
-
                 return result;
             }
             throw new FridgeIsClosedException();
+        }
+        public int GetFreeSpace()
+        {
+            if (isOpen)
+            {
+                var count = 0;
+                foreach (var shelf in shelfContainer)
+                {
+                    if (shelf != null)
+                    {
+                        count += shelf.GetFreeSpace();
+                    }
+                }
+                return count;
+            }
+            else
+            {
+                throw new FridgeIsClosedException();
+            }
         }
         public void Open()
         {

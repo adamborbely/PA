@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ArrayOfShelf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Shelf>
+    <id>1</id>
+    <capacity>100</capacity>
+    <shelfSize>Mini</shelfSize>
+    <foodList />
+  </Shelf>
+</ArrayOfShelf>

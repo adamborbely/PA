@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading;
 using com.codecool.api;
@@ -22,12 +23,13 @@ namespace com.codecool.cmd
         }
         public List<Shelf> Shelves
         {
-
             get { return shelves; }
+            set { shelves = value; }
         }
         public List<Food> Foods
         {
             get { return foods; }
+            set { foods = value; }
         }
 
         public Menu(Ilogger logger)
@@ -123,7 +125,6 @@ namespace com.codecool.cmd
                     }
                     catch (NoSuchRefigrigatorException)
                     {
-
                         Console.WriteLine("There is no Fridge called like that!");
                     }
                 }
@@ -132,12 +133,35 @@ namespace com.codecool.cmd
                     Console.Clear();
                     //save
                     logger.Save(Refigrigators);
+                    if (Shelves.Count > 0)
+                    {
+                        logger.SaveShelf(Shelves, "shelfInventory.xml");
+                    }
+                    if (Foods.Count > 0)
+                    {
+                        logger.SaveFood(Foods, "foodInventory.xml");
+                    }
                 }
                 else if (ans == "8")
                 {
                     //Load
                     Console.Clear();
-                    Refigrigators = logger.Load("Inventory.xml");
+                    try
+                    {
+                        Refigrigators = logger.Load("Inventory.xml");
+                        if (File.Exists("shelfInventory.xml"))
+                        {
+                            Shelves = logger.LoadShelf("shelfInventory.xml");
+                        }
+                        if (File.Exists("foodInventory.xml"))
+                        {
+                            Foods = logger.LoadFood("foodInventory.xml");
+                        }
+                    }
+                    catch (System.IO.FileNotFoundException)
+                    {
+                        Console.WriteLine("No previous save!");
+                    }
                 }
                 else if (ans == "9")
                 {
@@ -396,24 +420,57 @@ namespace com.codecool.cmd
                     {
                         Console.WriteLine("The choosen shelf already out of the fridge");
                     }
+                    catch (NotEnoughShelfException)
+                    {
+                        Console.WriteLine("The fridge doesn't have as many shelves!");
+                    }
                     break;
 
                 case "9":
                     Console.Clear();
-                    Console.WriteLine("This misses the following shelfes:");
-                    foreach (var shelf in refig.shelfContainer)
+                    try
                     {
-                        if (shelf == null)
-                        {
-                            Console.WriteLine();
-                        }
-                    }
-                    Console.WriteLine("Which shelf you want to take back?");
-                    var id = Convert.ToInt32(Console.ReadLine());
-                    var shelfToTakeBack = mh.FindShelfByIdANdSize(id, refig.fridgeSize, shelves);
-                    refig.AddShelf(shelfToTakeBack);
-                    shelves.Remove(shelfToTakeBack);
+                        var emptyslots = refig.FindEmptySlots();
 
+                        Console.WriteLine("This fridge misses the following shelfes:");
+                        foreach (var num in emptyslots)
+                        {
+                            Console.WriteLine(num + 1);
+                        }
+                        Console.WriteLine("Which shelf you want to take back?");
+                        var id = Convert.ToInt32(Console.ReadLine());
+
+                        var shelfToTakeBack = mh.FindShelfByIdANdSize(id, refig.fridgeSize, shelves);
+                        refig.AddShelf(shelfToTakeBack);
+                        shelves.Remove(shelfToTakeBack);
+
+                    }
+                    catch (BigItemCoolingException)
+                    {
+                        Console.WriteLine("There are a big food which dont let you take the shelf back");
+                    }
+                    catch (NotEnoughShelfException)
+                    {
+                        Console.WriteLine("The fridge doesn't have as many shelves!");
+
+                    }
+                    catch (NoEmptyShelfPlaceException)
+                    {
+                        Console.WriteLine("There are no empty shelf place!");
+                    }
+                    catch (System.FormatException)
+                    {
+                        Console.WriteLine("The input must be a number!");
+                    }
+                    catch (FridgeIsClosedException)
+                    {
+                        Console.WriteLine("Please open the fridge first");
+                    }
+                    break;
+                case "10":
+                    Console.Clear();
+                    Console.WriteLine("The fridge is closed");
+                    refig.Close();
                     break;
                 case "0":
                     Console.Clear();
@@ -541,14 +598,18 @@ namespace com.codecool.cmd
         }
         public Shelf FindShelfByIdANdSize(int id, Size size, List<Shelf> shelfList)
         {
-            foreach (var shelf in shelfList)
+            if (id > shelfList.Count - 1)
             {
-                if (id == shelf.ID && size.Equals(shelf.ShelfSize))
+                foreach (var shelf in shelfList)
                 {
-                    return shelf;
+                    if (id == shelf.ID && size.Equals(shelf.ShelfSize))
+                    {
+                        return shelf;
+                    }
                 }
+                throw new NoEmptyShelfPlaceException();
             }
-            throw new NoCompatibleShelfException();
+            throw new NotEnoughShelfException();
         }
     }
 }

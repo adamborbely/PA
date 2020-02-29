@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ArrayOfFood xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Food>
+    <_calories>12</_calories>
+    <_size>12</_size>
+    <_name>alma</_name>
+  </Food>
+</ArrayOfFood>

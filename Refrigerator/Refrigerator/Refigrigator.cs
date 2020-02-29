@@ -69,15 +69,22 @@ namespace com.codecool.api
         {
             if (isOpen)
             {
-                if (shelfContainer[number] != null)
+                if (number < numOfShelfs)
                 {
-                    var ShelfToRemove = shelfContainer[number];
-                    shelfContainer[number] = null;
-                    return ShelfToRemove;
+                    if (shelfContainer[number] != null)
+                    {
+                        var ShelfToRemove = shelfContainer[number];
+                        shelfContainer[number] = null;
+                        return ShelfToRemove;
+                    }
+                    else
+                    {
+                        throw new ShelfAlreadyRemovedException();
+                    }
                 }
                 else
                 {
-                    throw new ShelfAlreadyRemovedException();
+                    throw new NotEnoughShelfException();
                 }
 
             }
@@ -102,11 +109,15 @@ namespace com.codecool.api
                 {
                     foreach (var shelf in shelfContainer)
                     {
-                        if (shelf.AddFood(food))
+                        if (shelf != null)
                         {
-                            isFull = false;
-                            break;
+                            if (shelf.AddFood(food))
+                            {
+                                isFull = false;
+                                break;
+                            }
                         }
+
                     }
                 }
                 if (isFull)
@@ -175,6 +186,18 @@ namespace com.codecool.api
             {
                 throw new FridgeIsClosedException();
             }
+        }
+        public List<int> FindEmptySlots()
+        {
+            var empty = shelfContainer.Select((value, index) => new { value, index })
+                      .Where(pair => pair.value == null)
+                      .Select(pair => pair.index)
+                      .ToList();
+            if (empty.Count > 0)
+            {
+                return empty;
+            }
+            throw new NoEmptyShelfPlaceException();
         }
         public void Open()
         {

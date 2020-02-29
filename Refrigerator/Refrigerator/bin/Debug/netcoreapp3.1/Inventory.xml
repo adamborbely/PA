@@ -1,2 +1,23 @@
 <?xml version="1.0"?>
-<ArrayOfRefigrigator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfRefigrigator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Refigrigator xsi:type="MiniRefig">
+    <Name>mini</Name>
+    <numOfShelfs>3</numOfShelfs>
+    <shelfContainer>
+      <Shelf xsi:nil="true" />
+      <Shelf>
+        <id>2</id>
+        <capacity>100</capacity>
+        <shelfSize>Mini</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>3</id>
+        <capacity>100</capacity>
+        <shelfSize>Mini</shelfSize>
+        <foodList />
+      </Shelf>
+    </shelfContainer>
+    <fridgeSize>Mini</fridgeSize>
+  </Refigrigator>
+</ArrayOfRefigrigator>

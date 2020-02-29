@@ -22,17 +22,48 @@ namespace com.codecool.api
 
         public void Save(List<Refigrigator> refigrigators)
         {
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
-            using (Stream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+            using (Stream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
             {
                 XmlSerializer serializer2 = new XmlSerializer(typeof(List<Refigrigator>));
                 serializer2.Serialize(fs, refigrigators);
             }
-
+        }
+        public List<Food> LoadFood(string path)
+        {
+            var result = new List<Food>();
+            XmlSerializer serializer3 = new XmlSerializer(typeof(List<Food>));
+            using (FileStream fs2 = File.OpenRead(path))
+            {
+                result = (List<Food>)serializer3.Deserialize(fs2);
+            }
+            return result;
+        }
+        public void SaveFood(List<Food> foodList, string path)
+        {
+            using (Stream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
+            {
+                XmlSerializer serializer2 = new XmlSerializer(typeof(List<Food>));
+                serializer2.Serialize(fs, foodList);
+            }
         }
 
+        public List<Shelf> LoadShelf(string path)
+        {
+            var result = new List<Shelf>();
+            XmlSerializer serializer3 = new XmlSerializer(typeof(List<Shelf>));
+            using (FileStream fs2 = File.OpenRead(path))
+            {
+                result = (List<Shelf>)serializer3.Deserialize(fs2);
+            }
+            return result;
+        }
+        public void SaveShelf(List<Shelf> shelves, string path)
+        {
+            using (Stream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
+            {
+                XmlSerializer serializer2 = new XmlSerializer(typeof(List<Shelf>));
+                serializer2.Serialize(fs, shelves);
+            }
+        }
     }
 }

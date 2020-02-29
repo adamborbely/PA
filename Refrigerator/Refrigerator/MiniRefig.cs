@@ -25,11 +25,15 @@ namespace com.codecool.api
 
             foreach (var shelf in shelfContainer)
             {
-                if (shelf.AddFood(food))
+                if (shelf!=null)
                 {
-                    return false;
+                    if (shelf.AddFood(food))
+                    {
+                        return false;
 
+                    }
                 }
+               
             }
             return true;
         }

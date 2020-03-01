@@ -60,6 +60,9 @@ namespace com.codecool.api
     {
         public NotEnoughShelfException() { }
     }
-
+    class NoShelfInTheFridgeException : RefidrigatorExceptions
+    {
+        public NoShelfInTheFridgeException() { }
+    }
 
 }

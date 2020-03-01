@@ -53,6 +53,7 @@ namespace com.codecool.cmd
                     " 9) to check consumed calories\n" +
                     "10) to eat food from table\n" +
                     "11) to throw out food from table\n" +
+                    "12) to throw out a shelf from table\n" +
                     " 0) to exit");
                 var ans = Console.ReadLine();
                 if (ans == "1")
@@ -198,6 +199,31 @@ namespace com.codecool.cmd
                         Console.WriteLine("You have no food called like that in the table!");
                     }
                 }
+                else if (ans == "12")
+                {
+                    Console.Clear();
+                    try
+                    {
+                        if (Shelves.Count > 0)
+                        {
+                            Console.WriteLine("Which shelf you want to remove?\n(If you still have the fridge better to keep the shelf, it can't be recreate later!)\n");
+                            for (int i = 0; i < Shelves.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}) {Shelves[i].ShelfSize} shelf.");
+                            }
+                            var shelfToRemove = Convert.ToInt32(Console.ReadLine());
+                            Shelves.Remove(Shelves[shelfToRemove - 1]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("All shelfs in the fridges!");
+                        }
+                    }
+                    catch (System.ArgumentOutOfRangeException)
+                    {
+                        Console.WriteLine("Invalid input!");
+                    }
+                }
                 else if (ans == "0")
                 {
                     System.Environment.Exit(0);
@@ -301,6 +327,10 @@ namespace com.codecool.cmd
                     {
                         Console.WriteLine("The size of the food not good for this fridge.");
                     }
+                    catch (BigItemCoolingException)
+                    {
+                        Console.WriteLine("This food so huge, you cannat place it to this fridge!");
+                    }
                     break;
                 case "4":
                     Console.Clear();
@@ -364,7 +394,7 @@ namespace com.codecool.cmd
                     }
                     catch (FoodNotExistsException)
                     {
-                        Console.WriteLine("Fridge doesnt contains it.");
+                        Console.WriteLine("Fridge doesn't contains it.");
                     }
 
                     break;
@@ -449,11 +479,11 @@ namespace com.codecool.cmd
                     {
                         Console.WriteLine("There are a big food which dont let you take the shelf back");
                     }
-                    catch (NotEnoughShelfException)
-                    {
-                        Console.WriteLine("The fridge doesn't have as many shelves!");
+                    //catch (NotEnoughShelfException)
+                    //{
+                    //    Console.WriteLine("The fridge doesn't have as many shelves!");
 
-                    }
+                    //}
                     catch (NoEmptyShelfPlaceException)
                     {
                         Console.WriteLine("There are no empty shelf place!");
@@ -609,7 +639,11 @@ namespace com.codecool.cmd
                 }
                 throw new NoEmptyShelfPlaceException();
             }
-            throw new NotEnoughShelfException();
+            else
+            {
+                throw new NotEnoughShelfException();
+            }
+
         }
     }
 }

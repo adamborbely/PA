@@ -25,7 +25,7 @@ namespace com.codecool.api
 
             foreach (var shelf in shelfContainer)
             {
-                if (shelf!=null)
+                if (shelf != null)
                 {
                     if (shelf.AddFood(food))
                     {
@@ -33,10 +33,8 @@ namespace com.codecool.api
 
                     }
                 }
-               
             }
             return true;
         }
-        //public 
     }
 }

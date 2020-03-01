@@ -24,20 +24,30 @@ namespace com.codecool.api
 
         public override Shelf CoolBigItem(Food food)
         {
-            if (shelfContainer.Contains(null))
+            for (int i = 1; i < shelfContainer.Length; i++)//start from 1 because if the first fit cannot take the upper one out  
             {
-                if (FindEmptyShelfPlace() + 3 < shelfContainer.Length)
+                if (shelfContainer[i] != null && shelfContainer[i - 1] != null && shelfContainer[i].GetFreeSpace() > food.Size && shelfContainer[i - 1].NotContainsBigItem())
                 {
-                    shelfContainer[FindEmptyShelfPlace() + 3].AddFood(food);
-                    return RemoveShelf(FindEmptyShelfPlace() + 2);
+                    shelfContainer[i].AddFood(food);
+                    return RemoveShelf(i - 1);
                 }
-                throw new CannotCoolItException();
+
             }
-            else
-            {
-                shelfContainer[1].AddFood(food);
-                return RemoveShelf(0);
-            }
+            //if (shelfContainer.Contains(null))
+            //{
+            //    if (FindEmptyShelfPlace() + 3 < shelfContainer.Length)
+            //    {
+            //        shelfContainer[FindEmptyShelfPlace() + 3].AddFood(food);
+            //        return RemoveShelf(FindEmptyShelfPlace() + 2);
+            //    }
+            //    throw new CannotCoolItException();
+            //}
+            //else
+            //{
+            //    shelfContainer[1].AddFood(food);
+            //  return RemoveShelf(0);
+            //}
+            throw new FridgeIsFullException();
         }
 
         public override bool CoolSmallItem(Food food)

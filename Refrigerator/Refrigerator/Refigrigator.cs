@@ -22,6 +22,7 @@ namespace com.codecool.api
 
         public abstract Shelf CoolBigItem(Food food);
         public abstract bool CoolSmallItem(Food food);
+
         public int FindEmptyShelfPlace()
         {
             if (shelfContainer.Contains(null))
@@ -95,34 +96,40 @@ namespace com.codecool.api
         {
             if (isOpen)
             {
-                var isFull = true;
-                if (food.Size < 20)
+                if (food._size < CheckMaxShelfCapacity())
                 {
-                    isFull = CoolSmallItem(food);
-                }
-                else if (food.Size > 80)
-                {
-                    RemovedShelf = CoolBigItem(food);
-                    isFull = false;
+                    var isFull = true;
+                    if (food.Size < 20)
+                    {
+                        isFull = CoolSmallItem(food);
+                    }
+                    else if (food.Size > 80)
+                    {
+                        RemovedShelf = CoolBigItem(food);
+                        isFull = false;
+                    }
+                    else
+                    {
+                        foreach (var shelf in shelfContainer)
+                        {
+                            if (shelf != null)
+                            {
+                                if (shelf.AddFood(food))
+                                {
+                                    isFull = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (isFull)
+                    {
+                        throw new FridgeIsFullException();
+                    }
                 }
                 else
                 {
-                    foreach (var shelf in shelfContainer)
-                    {
-                        if (shelf != null)
-                        {
-                            if (shelf.AddFood(food))
-                            {
-                                isFull = false;
-                                break;
-                            }
-                        }
-
-                    }
-                }
-                if (isFull)
-                {
-                    throw new FridgeIsFullException();
+                    throw new BigItemCoolingException();
                 }
             }
             else
@@ -198,6 +205,18 @@ namespace com.codecool.api
                 return empty;
             }
             throw new NoEmptyShelfPlaceException();
+        }
+
+        public int CheckMaxShelfCapacity()
+        {
+            foreach (var shelf in shelfContainer)
+            {
+                if (shelf != null)
+                {
+                    return shelf.capacity;
+                }
+            }
+            throw new NoShelfInTheFridgeException();
         }
         public void Open()
         {

@@ -21,7 +21,17 @@ namespace com.codecool.api
 
         public override Shelf CoolBigItem(Food food)
         {
-            throw new NotImplementedException();
+            foreach (var shelf in shelfContainer)
+            {
+                if (shelf != null)
+                {
+                    if (shelf.AddFood(food))
+                    {
+                        return null;
+                    }
+                }
+            }
+            throw new FridgeIsFullException();
         }
 
         public override bool CoolSmallItem(Food food)

@@ -33,20 +33,6 @@ namespace com.codecool.api
                 }
 
             }
-            //if (shelfContainer.Contains(null))
-            //{
-            //    if (FindEmptyShelfPlace() + 3 < shelfContainer.Length)
-            //    {
-            //        shelfContainer[FindEmptyShelfPlace() + 3].AddFood(food);
-            //        return RemoveShelf(FindEmptyShelfPlace() + 2);
-            //    }
-            //    throw new CannotCoolItException();
-            //}
-            //else
-            //{
-            //    shelfContainer[1].AddFood(food);
-            //  return RemoveShelf(0);
-            //}
             throw new FridgeIsFullException();
         }
 

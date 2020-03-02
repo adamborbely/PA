@@ -44,7 +44,7 @@ namespace com.codecool.cmd
                 Console.WriteLine("Welcome to the FridgeSimulator! Press \n" +
                     " 1) to create a new fridge\n" +
                     " 2) to use a fridge\n" +
-                    " 3) to list all food outside of the fridges\n" +
+                    " 3) to list all food on the table\n" +
                     " 4) to list all available fridges\n" +
                     " 5) to list all shelfes \n" +
                     " 6) to delete a fridge \n" +
@@ -53,7 +53,7 @@ namespace com.codecool.cmd
                     " 9) to check consumed calories\n" +
                     "10) to eat food from table\n" +
                     "11) to throw out food from table\n" +
-                    "12) to throw out a shelf from table\n" +
+                    "12) to throw out a shelf\n" +
                     " 0) to exit");
                 var ans = Console.ReadLine();
                 if (ans == "1")
@@ -62,6 +62,7 @@ namespace com.codecool.cmd
                     try
                     {
                         var newFridge = AddRefig();
+                        Console.WriteLine($"You have created a new {newFridge.fridgeSize} fridge it has {newFridge.shelfContainer.Length} shelves, {newFridge.shelfContainer[0].Capacity} unit free space each!");
 
                     }
                     catch (FridgeAlreadyExistsException)
@@ -74,15 +75,19 @@ namespace com.codecool.cmd
                     Console.Clear();
                     try
                     {
-                        Console.WriteLine("Which Fridge you want to use?");
-                        var fridgeName = Console.ReadLine();
-                        var refig = mh.FindFrifgeByName(fridgeName, Refigrigators);
-                        inFridge = true;
-                        Console.Clear();
-                        while (inFridge)
+                        if (Refigrigators.Count > 0)
                         {
-                            FridgeMenuLogic(refig, FridgeMenu(refig));
+                            Console.WriteLine("Which Fridge you want to use?");
+                            var fridgeName = Console.ReadLine();
+                            var refig = mh.FindFrifgeByName(fridgeName, Refigrigators);
+                            inFridge = true;
+                            Console.Clear();
+                            while (inFridge)
+                            {
+                                FridgeMenuLogic(refig, FridgeMenu(refig));
+                            }
                         }
+                        Console.WriteLine("You have no fridge yet!");
                     }
                     catch (NoSuchRefigrigatorException)
                     {
@@ -93,25 +98,53 @@ namespace com.codecool.cmd
                 else if (ans == "3")
                 {
                     Console.Clear();
-                    foreach (var food in Foods)
+                    if (Foods.Count > 0)
                     {
-                        Console.WriteLine(food.Name);
+                        foreach (var food in Foods)
+                        {
+                            if (food.Size > 80)
+                            {
+                                Console.WriteLine($"{food.Name} it's a big item!");
+                            }
+                            else
+                            {
+                                Console.WriteLine(food.Name);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("There are no foods on the table!");
                     }
                 }
                 else if (ans == "4")
                 {
                     Console.Clear();
-                    foreach (var fridge in Refigrigators)
+                    if (Refigrigators.Count > 0)
                     {
-                        Console.WriteLine(fridge.Name);
+                        foreach (var fridge in Refigrigators)
+                        {
+                            Console.WriteLine(fridge.Name);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("There are no fridges yet!");
                     }
                 }
                 else if (ans == "5")
                 {
                     Console.Clear();
-                    foreach (var shelf in Shelves)
+                    if (Shelves.Count > 0)
                     {
-                        Console.WriteLine($"The ID of the shelf: {shelf.ID}, the size is: {shelf.ShelfSize}  ");
+                        foreach (var shelf in Shelves)
+                        {
+                            Console.WriteLine($"The ID of the shelf: {shelf.ID}, the size is: {shelf.ShelfSize}  ");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No shelves outside of the fridge!");
                     }
                 }
                 else if (ans == "6")
@@ -119,10 +152,18 @@ namespace com.codecool.cmd
                     Console.Clear();
                     try
                     {
-                        Console.WriteLine("Which Fridge you want to remove?");
-                        var fridgeName = Console.ReadLine();
-                        var refig = mh.FindFrifgeByName(fridgeName, Refigrigators);
-                        Refigrigators.Remove(refig);
+                        if (Refigrigators.Count > 0)
+                        {
+                            Console.WriteLine("Which Fridge you want to remove?");
+                            var fridgeName = Console.ReadLine();
+                            var refig = mh.FindFrifgeByName(fridgeName, Refigrigators);
+                            Refigrigators.Remove(refig);
+                            Console.WriteLine($"The {fridgeName} has been removed!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You have no fridge yet!");
+                        }
                     }
                     catch (NoSuchRefigrigatorException)
                     {
@@ -142,6 +183,7 @@ namespace com.codecool.cmd
                     {
                         logger.SaveFood(Foods, "foodInventory.xml");
                     }
+                    Console.WriteLine("We saved your work!");
                 }
                 else if (ans == "8")
                 {
@@ -158,6 +200,7 @@ namespace com.codecool.cmd
                         {
                             Foods = logger.LoadFood("foodInventory.xml");
                         }
+                        Console.WriteLine("We loaded your previous simulation");
                     }
                     catch (System.IO.FileNotFoundException)
                     {
@@ -174,10 +217,17 @@ namespace com.codecool.cmd
                     Console.Clear();
                     try
                     {
-                        Console.WriteLine("What you want to eat?");
-                        var foodToEatFromTable = Console.ReadLine();
-                        consumedCalories += mh.ConsumFoodFromTable(Foods, foodToEatFromTable);
-                        Console.WriteLine($"You have eat {foodToEatFromTable} from table!");
+                        if (Foods.Count > 0)
+                        {
+                            Console.WriteLine("What you want to eat?");
+                            var foodToEatFromTable = Console.ReadLine();
+                            consumedCalories += mh.ConsumFoodFromTable(Foods, foodToEatFromTable);
+                            Console.WriteLine($"You have eat {foodToEatFromTable} from table!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no foods on the table!");
+                        }
                     }
                     catch (FoodNotExistsException)
                     {
@@ -189,10 +239,17 @@ namespace com.codecool.cmd
                     Console.Clear();
                     try
                     {
-                        Console.WriteLine("What you want to throw out?");
-                        var foodToRemoveFromTable = Console.ReadLine();
-                        mh.ConsumFoodFromTable(Foods, foodToRemoveFromTable);
-                        Console.WriteLine($"You have thrown out {foodToRemoveFromTable} from table!");
+                        if (Foods.Count > 0)
+                        {
+                            Console.WriteLine("What you want to throw out?");
+                            var foodToRemoveFromTable = Console.ReadLine();
+                            mh.ConsumFoodFromTable(Foods, foodToRemoveFromTable);
+                            Console.WriteLine($"You have thrown out {foodToRemoveFromTable} from table!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are no foods on the table!");
+                        }
                     }
                     catch (FoodNotExistsException)
                     {
@@ -213,10 +270,11 @@ namespace com.codecool.cmd
                             }
                             var shelfToRemove = Convert.ToInt32(Console.ReadLine());
                             Shelves.Remove(Shelves[shelfToRemove - 1]);
+                            Console.WriteLine("You removed a shelf!");
                         }
                         else
                         {
-                            Console.WriteLine("All shelfs in the fridges!");
+                            Console.WriteLine("No shelf outside!");
                         }
                     }
                     catch (System.ArgumentOutOfRangeException)
@@ -226,6 +284,7 @@ namespace com.codecool.cmd
                 }
                 else if (ans == "0")
                 {
+                    Console.WriteLine("Bye!");
                     System.Environment.Exit(0);
                 }
                 else
@@ -266,7 +325,14 @@ namespace com.codecool.cmd
                         {
                             foreach (var food in refig.ListFood())
                             {
-                                Console.WriteLine(food.Name);
+                                if (food.Size > 80)
+                                {
+                                    Console.WriteLine($"{food.Name} it's a big item!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine(food.Name);
+                                }
                             }
                         }
                         else
@@ -281,8 +347,15 @@ namespace com.codecool.cmd
                     break;
                 case "2":
                     Console.Clear();
-                    Console.WriteLine($"You opened the {refig.Name} fridge!");
-                    refig.Open();
+                    if (refig.IsOpen())
+                    {
+                        Console.WriteLine($"The {refig.Name} is already open!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You opened the {refig.Name} fridge!");
+                        refig.Open();
+                    }
                     break;
                 case "3":
                     Console.Clear();
@@ -294,7 +367,7 @@ namespace com.codecool.cmd
                             var foodName = Console.ReadLine();
                             Console.WriteLine("How many calories it has?");
                             var calories = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("What is the size of the food?");
+                            Console.WriteLine("What is the size of the food?(If it'size bigger than 80 - it's a big item, if smaller than 20 -it's a small item.)");
                             var size = Convert.ToInt32(Console.ReadLine());
                             refig.AddFood(new Food(calories, size, foodName));
 
@@ -339,7 +412,14 @@ namespace com.codecool.cmd
                         Console.WriteLine("Which food you want to add from the table: ");
                         foreach (var food in Foods)
                         {
-                            Console.WriteLine(food.Name);
+                            if (food.Size > 80)
+                            {
+                                Console.WriteLine($"{food.Name} it's a big item!");
+                            }
+                            else
+                            {
+                                Console.WriteLine(food.Name);
+                            }
                         }
                         try
                         {
@@ -386,6 +466,7 @@ namespace com.codecool.cmd
                     }
                     break;
                 case "5":
+                    Console.Clear();
                     try
                     {
                         Console.WriteLine("What food you want to take to the table?");
@@ -399,6 +480,7 @@ namespace com.codecool.cmd
 
                     break;
                 case "6":
+                    Console.Clear();
                     try
                     {
                         Console.WriteLine("What you want to eat?");
@@ -431,12 +513,20 @@ namespace com.codecool.cmd
                     try
                     {
                         Console.WriteLine("Which shelf you want to remove?");
+                        for (int i = 0; i < refig.shelfContainer.Length; i++)
+                        {
+                            if (refig.shelfContainer[i] != null)
+                            {
+                                Console.WriteLine(i + 1);
+                            }
+                        }
                         var shelfToRemove = Convert.ToInt32(Console.ReadLine());
                         var removedShelf = refig.RemoveShelf(shelfToRemove - 1);
 
                         shelves.Add(removedShelf);
                         foods.AddRange(removedShelf.foodList);
                         removedShelf.foodList = new List<Food>();
+                        Console.WriteLine($"You have removed the number {shelfToRemove} shelf!");
                     }
                     catch (System.FormatException)
                     {
@@ -479,11 +569,6 @@ namespace com.codecool.cmd
                     {
                         Console.WriteLine("There are a big food which dont let you take the shelf back");
                     }
-                    //catch (NotEnoughShelfException)
-                    //{
-                    //    Console.WriteLine("The fridge doesn't have as many shelves!");
-
-                    //}
                     catch (NoEmptyShelfPlaceException)
                     {
                         Console.WriteLine("There are no empty shelf place!");
@@ -628,22 +713,14 @@ namespace com.codecool.cmd
         }
         public Shelf FindShelfByIdANdSize(int id, Size size, List<Shelf> shelfList)
         {
-            if (id > shelfList.Count - 1)
+            foreach (var shelf in shelfList)
             {
-                foreach (var shelf in shelfList)
+                if (id == shelf.ID && size.Equals(shelf.ShelfSize))
                 {
-                    if (id == shelf.ID && size.Equals(shelf.ShelfSize))
-                    {
-                        return shelf;
-                    }
+                    return shelf;
                 }
-                throw new NoEmptyShelfPlaceException();
             }
-            else
-            {
-                throw new NotEnoughShelfException();
-            }
-
+            throw new NoEmptyShelfPlaceException();
         }
     }
 }

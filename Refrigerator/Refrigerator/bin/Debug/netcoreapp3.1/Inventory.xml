@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfRefigrigator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Refigrigator xsi:type="MiniRefig">
-    <Name>mini</Name>
+    <Name>Minix</Name>
     <numOfShelfs>3</numOfShelfs>
     <shelfContainer>
-      <Shelf xsi:nil="true" />
+      <Shelf>
+        <id>1</id>
+        <capacity>100</capacity>
+        <shelfSize>Mini</shelfSize>
+        <foodList />
+      </Shelf>
       <Shelf>
         <id>2</id>
         <capacity>100</capacity>
@@ -19,5 +24,127 @@
       </Shelf>
     </shelfContainer>
     <fridgeSize>Mini</fridgeSize>
+  </Refigrigator>
+  <Refigrigator xsi:type="NormalRefig">
+    <Name>Normie</Name>
+    <numOfShelfs>6</numOfShelfs>
+    <shelfContainer>
+      <Shelf>
+        <id>1</id>
+        <capacity>150</capacity>
+        <shelfSize>Normal</shelfSize>
+        <foodList>
+          <Food>
+            <_calories>120</_calories>
+            <_size>24</_size>
+            <_name>sor</_name>
+          </Food>
+          <Food>
+            <_calories>120</_calories>
+            <_size>75</_size>
+            <_name>felcser</_name>
+          </Food>
+        </foodList>
+      </Shelf>
+      <Shelf xsi:nil="true" />
+      <Shelf>
+        <id>3</id>
+        <capacity>150</capacity>
+        <shelfSize>Normal</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>4</id>
+        <capacity>150</capacity>
+        <shelfSize>Normal</shelfSize>
+        <foodList>
+          <Food>
+            <_calories>125</_calories>
+            <_size>75</_size>
+            <_name>halal</_name>
+          </Food>
+        </foodList>
+      </Shelf>
+      <Shelf>
+        <id>5</id>
+        <capacity>150</capacity>
+        <shelfSize>Normal</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>6</id>
+        <capacity>150</capacity>
+        <shelfSize>Normal</shelfSize>
+        <foodList />
+      </Shelf>
+    </shelfContainer>
+    <fridgeSize>Normal</fridgeSize>
+  </Refigrigator>
+  <Refigrigator xsi:type="DoubleRefig">
+    <Name>Doumbledore</Name>
+    <numOfShelfs>10</numOfShelfs>
+    <shelfContainer>
+      <Shelf>
+        <id>1</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>2</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>3</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>4</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>5</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>6</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>7</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>8</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>9</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+      <Shelf>
+        <id>10</id>
+        <capacity>170</capacity>
+        <shelfSize>DoubleDoor</shelfSize>
+        <foodList />
+      </Shelf>
+    </shelfContainer>
+    <fridgeSize>DoubleDoor</fridgeSize>
   </Refigrigator>
 </ArrayOfRefigrigator>

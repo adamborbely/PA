@@ -1,66 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace com.codecool.api
 {
-    class RefidrigatorExceptions : Exception
+    public class RefidrigatorExceptions : Exception
     {
         public RefidrigatorExceptions() { }
     }
-    class CannotCoolItException : RefidrigatorExceptions
+    public class CannotCoolItException : RefidrigatorExceptions
     {
         public CannotCoolItException() { }
     }
-    class NoEmptyShelfPlaceException : RefidrigatorExceptions
+    public class NoEmptyShelfPlaceException : RefidrigatorExceptions
     {
         public NoEmptyShelfPlaceException() { }
     }
-    class SizeNotCompatableException : RefidrigatorExceptions
+    public class SizeNotCompatableException : RefidrigatorExceptions
     {
         public SizeNotCompatableException() { }
     }
-    class FridgeIsClosedException : RefidrigatorExceptions
+    public class FridgeIsClosedException : RefidrigatorExceptions
     {
         public FridgeIsClosedException() { }
     }
-    class FridgeIsFullException : RefidrigatorExceptions
+    public class FridgeIsFullException : RefidrigatorExceptions
     {
         public FridgeIsFullException() { }
     }
-    class FoodNotExistsException : RefidrigatorExceptions
+    public class FoodNotExistsException : RefidrigatorExceptions
     {
         public FoodNotExistsException() { }
     }
-    class TooSmallItemException : RefidrigatorExceptions
+    public class TooSmallItemException : RefidrigatorExceptions
     {
         public TooSmallItemException() { }
     }
-    class NoSuchRefigrigatorException : RefidrigatorExceptions
+    public class NoSuchRefigrigatorException : RefidrigatorExceptions
     {
         public NoSuchRefigrigatorException() { }
     }
-    class FridgeAlreadyExistsException : RefidrigatorExceptions
+    public class FridgeAlreadyExistsException : RefidrigatorExceptions
     {
         public FridgeAlreadyExistsException() { }
     }
-    class BigItemCoolingException : RefidrigatorExceptions
+    public class BigItemCoolingException : RefidrigatorExceptions
     {
         public BigItemCoolingException() { }
     }
-    class ShelfAlreadyRemovedException : RefidrigatorExceptions
+    public class ShelfAlreadyRemovedException : RefidrigatorExceptions
     {
         public ShelfAlreadyRemovedException() { }
     }
-    class NoCompatibleShelfException : RefidrigatorExceptions
+    public class NoCompatibleShelfException : RefidrigatorExceptions
     {
         public NoCompatibleShelfException() { }
     }
-    class NotEnoughShelfException : RefidrigatorExceptions
+    public class NotEnoughShelfException : RefidrigatorExceptions
     {
         public NotEnoughShelfException() { }
     }
-    class NoShelfInTheFridgeException : RefidrigatorExceptions
+    public class NoShelfInTheFridgeException : RefidrigatorExceptions
     {
         public NoShelfInTheFridgeException() { }
     }

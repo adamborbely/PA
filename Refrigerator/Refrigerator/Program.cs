@@ -1,5 +1,4 @@
-﻿using System;
-using com.codecool.api;
+﻿using com.codecool.api;
 
 namespace com.codecool.cmd
 {

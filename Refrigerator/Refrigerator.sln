@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refrigerator", "Refrigerator\Refrigerator.csproj", "{43D7E918-88D5-416C-8CA6-198F491B80B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refrigerator", "Refrigerator\Refrigerator.csproj", "{43D7E918-88D5-416C-8CA6-198F491B80B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefrigeratorTest", "RefrigeratorTest\RefrigeratorTest.csproj", "{64B823AB-2AC0-4256-B5E1-B34BC479D719}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43D7E918-88D5-416C-8CA6-198F491B80B9} = {43D7E918-88D5-416C-8CA6-198F491B80B9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{43D7E918-88D5-416C-8CA6-198F491B80B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D7E918-88D5-416C-8CA6-198F491B80B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D7E918-88D5-416C-8CA6-198F491B80B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B823AB-2AC0-4256-B5E1-B34BC479D719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B823AB-2AC0-4256-B5E1-B34BC479D719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B823AB-2AC0-4256-B5E1-B34BC479D719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B823AB-2AC0-4256-B5E1-B34BC479D719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

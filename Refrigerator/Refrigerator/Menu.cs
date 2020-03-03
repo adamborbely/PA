@@ -1,9 +1,8 @@
-﻿using System;
+﻿using com.codecool.api;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
-using com.codecool.api;
 
 namespace com.codecool.cmd
 {

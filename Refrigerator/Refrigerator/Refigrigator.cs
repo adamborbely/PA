@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
-using System.Collections.Generic;
 
 namespace com.codecool.api
 {
@@ -23,17 +22,7 @@ namespace com.codecool.api
         public abstract Shelf CoolBigItem(Food food);
         public abstract bool CoolSmallItem(Food food);
 
-        public int FindEmptyShelfPlace()
-        {
-            if (shelfContainer.Contains(null))
-            {
-                return Array.LastIndexOf(shelfContainer, null);
-            }
-            else
-            {
-                throw new NoEmptyShelfPlaceException();
-            }
-        }
+
         public void AddShelf(Shelf shelf)
         {
             if (isOpen)
@@ -87,7 +76,6 @@ namespace com.codecool.api
                 {
                     throw new NotEnoughShelfException();
                 }
-
             }
             throw new FridgeIsClosedException();
         }

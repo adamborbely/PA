@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace com.codecool.api
+﻿namespace com.codecool.api
 {
     public class DoubleRefig : Refigrigator
     {
